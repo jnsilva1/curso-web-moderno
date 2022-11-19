@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Desafio Menu</title>
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+        /* MINHA SOLUÇÃO */
+        /* body{
+            background-color: #CCE;
+            padding: 0;
+            margin: 0;
+        }
+        
+        nav.menu, nav.menu ul, nav.menu ul li, div.logo, div.logo img, aside.autenticacao, aside.autenticacao a{
+            display: flex;
+            padding: 0;
+            margin: 0;
+        }
+        
+        header.cabecalho{
+            background-color: black;
+            display: flex;
+            align-items: center;
+            border-bottom: 7px solid #3d8be4;
+            color: #fff;
+        }
+        
+        
+        div.logo{ padding: 10px;}
+        div.logo img{
+            width: 250px;
+        }
+
+        button.menu-toggle{
+            display: none;
+            align-self: center;
+            min-height: 35px;
+            min-width: 60px;
+            background-color: #3c3c3e;
+            color: white;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            text-align: center;
+            vertical-align: middle;
+            border-radius: 5px;
+            border: .5px solid darkgray;
+        }
+        button.menu-toggle i{
+            margin-top: 2px;
+        }
+
+        nav.menu, nav.menu ul, nav.menu ul li{ 
+            box-sizing: border-box;
+            min-height: 60px;
+            align-self: center;
+            align-items: center;
+        }
+
+        nav.menu ul li a, aside.autenticacao a{
+            text-decoration: none;
+            font-size: 16pt;
+            color: inherit;
+            font-family: 'Oswald';
+            min-width: 60px;
+            padding-left: 5px;
+            padding-right: 5px;
+            text-align: center;
+        }
+        nav.menu ul li:hover, nav.menu ul li.active{
+            background-color: #3d8be4;
+            color: black;
+        }
+
+        aside.autenticacao{ 
+            position: absolute;
+            right: 20px;
+            min-width: 200px;
+        }
+
+        aside.autenticacao a{
+            display: inline-block;
+            justify-content: center;
+            padding: 5px;
+        }
+        
+        .botao{
+            border-radius: 20px;
+        }
+
+        .botao.destaque{
+            background-color: red;
+            color: white;
+            min-width: 100px;
+        }
+
+        @media (max-width: 799px) {
+            aside.autenticacao{
+                display: none;
+            }
+        }
+
+        @media (max-width: 569px){
+            nav.menu{
+                display: none;
+            }
+            button.menu-toggle{
+                display: inline-flex;
+            }
+            header.cabecalho{
+                justify-content: space-between;
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+        } */
+
+        /** SOLUÇÃO DO PROFESSOR */
+        *{
+            box-sizing: border-box;
+        }
+
+        body{
+            margin: 0;
+            font-family: 'Oswald', sans-serif;
+            background-color: lightgray;
+        }
+
+        .cabecalho{
+            background-color: #333;
+            border-bottom: solid 5px #4faddb;
+            height: 80px;
+            box-sizing: content-box;
+        }
+
+        .logo{
+            display: inline-block;
+            height: 80px;
+            padding: 15px;
+        }
+
+        .logo img{
+            height: 100%;
+        }
+
+        .menu-toggle{
+            float: right;
+            color: #eee;
+            background-color: #555;
+            border: solid 1px #777;
+            border-radius: 5px;
+            height: 40px;
+            padding: 10px 20px;
+            margin: 20px 15px;
+        }
+
+        .menu{
+            display: inline-block;
+            vertical-align: top;
+            height: 80px;
+            padding: 25px;
+        }
+        
+        .menu ul{
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu li{
+            display: inline-block;
+        }
+
+        .cabecalho a{
+            text-decoration: none;
+            color: #eee;
+            font-size: 1.3em;
+        }
+
+        .menu a{
+            padding: 15px;
+        }
+
+        .autenticacao{
+            float: right;
+            height: 80px;
+            padding: 25px;
+        }
+
+        .menu a:hover, 
+        .menu a.active{
+            background-color: #4faddb;
+            color: #000;
+        }
+
+        .botao{
+            border-radius: 30px;
+            padding: 10px 25px;
+            margin: 10px;
+        }
+
+        .destaque{
+            background-color: #f50a31;
+            color: #fff;
+        }
+
+        @media(min-width: 679px){
+            .menu-toggle{
+                display: none;
+            }
+        }
+
+        @media(max-width: 680px){
+            .menu{
+                display: none;
+            }
+        }
+
+        @media(max-width: 910px){
+            .autenticacao{
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="cabecalho">
+        <div class="logo">
+            <a href="#inicio">
+                <img src="http://files.cod3r.com.br/curso-web/logo.png" alt="Logo" />
+            </a>
+        </div>
+        <button class="menu-toggle">
+            <i class="fa fa-lg fa-bars"></i>
+        </button>
+        <nav class="menu">
+            <ul>
+                <li>
+                    <a href="#inicio">Início</a>
+                </li>
+                <li>
+                    <a href="#cursos">Cursos</a>
+                </li>
+                <li>
+                    <a href="#sobre">Sobre</a>
+                </li>
+                <li>
+                    <a href="#contato">Contato</a>
+                </li>
+            </ul>
+        </nav>
+        <aside class="autenticacao">
+            <a href="#login">Login</a>
+            <a href="#registar" class="botao destaque">Registrar</a>
+        </aside>
+    </header>
+
+    <script>
+        // ... Minha solução
+        // if(window.history){
+        //     var lastUrl = window.location.href;
+        //     window.addEventListener('hashchange', function(ev){
+        //         document.querySelectorAll('nav.menu ul li').forEach(menuItem=>{
+        //             var hasHash = menuItem.querySelectorAll(`a[href="${window.location.hash}"]`).length > 0;
+        //             menuItem.classList[hasHash ? "add" : "remove"]('active');
+        //         })
+        //     }, false);
+        // }
+
+        // ... Solução do professor
+        window.addEventListener('hashchange',function(e){
+            const oldUrl = e.oldURL.split('#')[1]
+            const newUrl = e.newURL.split('#')[1]
+            const oldMenu = document.querySelector(`.menu a[href="#${oldUrl}"]`)
+            const newMenu = document.querySelector(`.menu a[href="#${newUrl}"]`)
+
+            oldMenu && oldMenu.classList.remove('active')
+            newMenu && newMenu.classList.add('active')
+        })
+
+    </script>
+</body>
+
+</html>

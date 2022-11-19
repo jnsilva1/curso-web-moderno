@@ -1,0 +1,102 @@
+<div wm-slider>
+
+    <p>
+        <img src="http://files.cod3r.com.br/curso-web/imagem1.jpg" alt="Mudo da Cidade" width="513" height="342" title="Muro da Cidade por Tarso Bessa">
+    </p>
+
+    <p>
+        <img src="http://files.cod3r.com.br/curso-web/imagem2.gif" alt="Intro Cod3r" height="342">
+    </p>
+
+    <p class="circular">
+        <img src="http://files.cod3r.com.br/curso-web/imagem3.png" alt="Rio de Janeiro" height="342">
+    </p>
+
+    <p class="texto">
+        <img src="http://files.cod3r.com.br/curso-web/avatar.jpg" alt="Avatar" height="50" align="left">
+        Texto sknsklnldn sknlsdknfl ksflksnlfknsçfklng slkgnlekngç g kltjnweklrt çektgnxer çergnwjkgnkweçrnjgçerjgnecgr erwgkjng çwe
+    </p>
+
+    <p class="cidade"></p>
+
+    <p>
+        <picture>  
+            <source srcset="http://files.cod3r.com.br/curso-web/logo-larga.png" media="(min-width:600px)">
+            <img src="http://files.cod3r.com.br/curso-web/logo-larga.png" alt="Logo">
+        </picture>
+    </p>
+</div>
+
+<style>
+    p{
+        position: absolute;
+        display: none;
+    }
+
+    .circular{
+        width: 513px;
+        background-color: #444;
+    }
+
+    .texto{
+        width: 400px;
+    }
+    .texto img{
+        margin-right: 10px;
+    }
+    
+    .cidade{
+        width: 513px;
+        height: 342px;
+        background-image:url(http://files.cod3r.com.br/curso-web/imagem4.jpg) ;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 200%;
+    }
+
+    .sliding{
+        animation: slide 15s ease;
+        display: block !important;
+    }
+
+    @keyframes slide {
+        from {left: -50%; }
+        to {left: 110%;}
+    }
+
+    div[wm-slider]{
+        height: 500px;
+    }
+</style>
+<script>
+    function slide(element, callback){
+        if(element instanceof HTMLElement){
+
+            element.classList.add('sliding')            
+            element.style.animationDirection = 'reverse'
+        }
+        setTimeout(callback,5000);
+        setTimeout(function(){
+            try{
+                element.classList.remove('sliding')
+            }
+            catch(e){}
+        }, 14500);
+    }
+
+    function startSliding(current, slideCollection){
+        if(slideCollection instanceof Array){
+            current = current || slideCollection[0];
+            let next = () => {
+                let index = slideCollection.indexOf(current) + 1
+                if(index >= slideCollection.length) index = 0
+                startSliding(slideCollection[index], slideCollection)
+            }
+
+            slide(current, next);
+        }
+        
+    }
+
+    startSliding(null, Array.from(document.querySelector('[wm-slider]').children))
+</script>

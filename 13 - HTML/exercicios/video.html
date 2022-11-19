@@ -1,0 +1,75 @@
+<h1>Vídeo</h1>
+
+<video id="meuVideo" width="800" controlsList="nodownload">
+    <source src="http://files.cod3r.com.br/curso-web/video.mp4" type="video/mp4">
+    Seu browser não suporta a tag video.
+</video>
+<div wm-progresso="meuVideo" class="progresso">
+    <div></div>
+</div>
+<div>
+    <button wm-play="meuVideo">Play</button>
+    <button wm-pause="meuVideo">Pause</button>
+</div>
+<style>
+    .progresso{
+        height: 20px;
+        width: 500px;
+        border: solid 1px #444;
+        margin: 20px;
+    }
+
+    .progresso > div{
+        background-color: red;
+        color: #fff;
+        height: 100%;
+        text-align: right;
+        font-size: 14px;
+        width: 0%;
+    }
+</style>
+<script>
+    const progress = document.querySelector('[wm-progresso]')
+    const play = document.querySelector('[wm-play]')
+    const pause = document.querySelector('[wm-pause]')
+
+    play.onclick =  function(){
+        const video = document.getElementById(play.attributes.getNamedItem('wm-play').value)
+        video.play()
+        startProgress(progress)
+    }
+
+    pause.onclick =  function(){
+        const video = document.getElementById(pause.attributes.getNamedItem('wm-pause').value)
+        video.pause()
+        stopProgress(progress)
+    }
+    let i = 0;
+
+    function setProgress(targetElement, currentTime, totalTime){
+        if(i++ === 1){
+            console.log(currentTime)
+            console.log(totalTime)
+        }
+        
+        const progressElement = targetElement.children[0] 
+        progressElement.style.width =  (currentTime / totalTime * 100) + '%';
+        if(currentTime >= totalTime)
+            stopProgress(targetElement);
+    }
+
+    function startProgress(element){
+        const video = document.getElementById(element.attributes.getNamedItem('wm-progresso').value)
+        element['progressInterval'] = setInterval(function(){
+            setProgress(element, video.currentTime, video.duration)
+        } , 100)
+    }
+
+    function stopProgress(element){
+        try{
+            clearInterval(element['progressInterval'])
+        }catch(e){}
+    }
+
+
+</script>

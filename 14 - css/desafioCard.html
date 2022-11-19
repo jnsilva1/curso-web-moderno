@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <title>Desafio Card</title>
+    <style>
+        /* MINHA RESOLUÇÃO */
+
+        /* .curso{
+            display: inline-flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 260px;
+            height: 300px;
+            margin: 0 15px 0 15px;
+            border: 1px solid #ddd;
+            box-shadow: 3px 3px 20px #afafaf;
+            padding: 5px;
+            font-family: Helvetica, sans-serif;
+        }
+
+        .curso img{
+            width: 100%;
+            max-height: 150px;
+        }
+
+        .curso .curso-info{
+            display: flex;
+            flex-direction: column;
+            font-weight: bold;
+            overflow-y: hidden;
+            margin-left: 10px;
+            max-height: 100px;
+        }
+
+        .curso .curso-info h4{
+            font-size: 18pt;
+            margin: 0;
+        }
+
+        .curso .curso-preco{
+            display: inline-block;
+            justify-content: end;
+            align-items: flex-end;
+            padding: 3px;
+            font-family: Prima, sans-serif;
+            box-sizing: border-box;
+            align-self: flex-end;
+            font-weight: 600;
+            min-height: 30px;
+        }
+
+        .curso .curso-preco span{
+            min-width: 60px;
+            margin-right: 5px;
+            display: inline-block;
+        }
+
+        .curso .curso-preco .preco-de{
+            color: #b12522;
+            text-decoration: line-through;
+            
+        }
+
+        .curso .curso-preco .preco-por{
+            color: rgb(2, 128, 8);
+            font-size: 16pt;
+            font-weight: bolder;
+        } */
+
+        /* RESOLUÇÃO DO PROFESSOR */
+        .curso {
+            float: left;
+            font-family: Verdana, sans-serif;
+            border: solid 1px #ccc;
+            box-shadow: 0 4px 20px 0 rgba(0, 0, 0, .3);
+            height: 300px;
+            width: 260px;
+            margin: 5px 20px;
+            padding: 5px;
+        }
+
+        .curso img{
+            width: 100%;
+            max-height: 50%;
+        }
+
+        .curso-info{
+            padding: 10px;
+            height: 90px;
+            overflow: hidden;
+        }
+
+        .curso-info h4{
+            font-size: 1.4em;
+            font-weight: 100;
+            margin: 0px;
+        }
+
+        .curso-preco{
+            float: right;
+            padding: 10px;
+        }
+
+        .preco-de{
+            text-decoration: line-through;
+            color: firebrick;
+        }
+
+        .preco-por{
+            color: green;
+            font-weight: bold;
+            font-size: 1.4em;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Card</h1>
+
+    <h2>Objetivo</h2>
+    <img src="http://files.cod3r.com.br/curso-web/card.png" height="340" alt="Objetivo">
+
+    <h2>Resultado</h2>
+    <div>
+        <div class="curso">
+            <img src="http://files.cod3r.com.br/curso-web/curso1.jpg" />
+            <div class="curso-info">
+                <h4>Docker: Ferramenta essencial para Desenvolvedores</h4>
+                <p>Prof. Fulano</p>
+            </div>
+            <div class="curso-preco">
+                <span class="preco-de">R$80,00</span>
+                <span class="preco-por">R$50,00</span>
+            </div>
+        </div>
+        <div class="curso">
+            <img src="http://files.cod3r.com.br/curso-web/curso2.jpg" />
+            <div class="curso-info">
+                <h4>Web Moderno com Javascript + Projetos</h4>
+                <p>Prof. Sicrano Filho</p>
+            </div>
+            <div class="curso-preco">
+                <span class="preco-de">R$80,00</span>
+                <span class="preco-por">R$50,00</span>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

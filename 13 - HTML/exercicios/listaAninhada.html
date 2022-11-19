@@ -1,0 +1,60 @@
+<h1>Projeto</h1>
+<ul class="tree">
+    <li>
+        Back-end
+        <ul>
+            <li>
+                app
+                <ul>
+                    <li>produto.js</li>
+                    <li>usuario.js</li>
+                    <li>venda.js</li>
+                </ul>
+            </li>
+            <li>
+                config
+                <ul>
+                    <li>banco.js</li>
+                    <li>rotas.js</li>
+                    <li>servidor.js</li>
+                </ul>               
+            </li>
+        </ul>
+    </li>
+    <li>
+        Front-end
+        <ul>
+            <li>
+                public
+                <ul>
+                    <li>app.css</li>
+                    <li>app.js</li>
+                    <li>index.html</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+<link rel="stylesheet" href="http://files.cod3r.com.br/curso-web/tree.css">
+<script>
+    document.querySelectorAll('.tree').forEach(tree=>{
+        Array.from(tree.querySelectorAll('li')).filter(li=> !!li.querySelector('ul'))
+        .forEach(parent=> {
+            parent.onclick = function(e){  
+                Array.from(parent.children).filter(child=> child.tagName.toUpperCase() === 'UL')
+                .forEach(list=> list.style.display = list.style.display == 'none' ? 'block' : 'none'); 
+                e.stopImmediatePropagation();
+                e.stopPropagation();
+                return false; 
+            }
+            parent.querySelectorAll('ul, li').forEach(child=> {
+                child.onclick = function(e){
+                    e.stopImmediatePropagation();
+                    e.stopPropagation();
+                    return false;
+                }
+            });
+            parent.style.cursor = 'pointer';
+        }) 
+    });
+</script>
