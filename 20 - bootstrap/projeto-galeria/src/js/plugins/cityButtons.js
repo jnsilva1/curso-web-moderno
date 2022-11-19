@@ -1,4 +1,5 @@
 import $ from 'jquery'
+import { onLoadHtmlSuccess } from '../core/includes'
 
 const duration = 600
 function filterByCity(city){
@@ -8,7 +9,7 @@ function filterByCity(city){
         const methodVisibility = isTarget ? "fadeIn" : "fadeOut",
          methodClass = isTarget ? "removeClass" : "addClass"
         
-        $(this)[methodVisibility](duration)[methodClass]('d-none')
+        $(this)[methodVisibility](duration).parent()[methodClass]('d-none')
     })
 }
 
@@ -38,4 +39,4 @@ $.fn.cityButtons = function () {
     return this
 }
 
-$('[wm-city-buttons]').cityButtons()
+onLoadHtmlSuccess(()=> $('[wm-city-buttons]').cityButtons())
