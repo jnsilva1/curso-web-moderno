@@ -1,5 +1,5 @@
 import React from  'react'
-import ReadDOM from 'react-dom'
+import ReactDOM from 'react-dom'
 
 // import BomDia from './componentes/BomDia'
 
@@ -16,7 +16,20 @@ import ReadDOM from 'react-dom'
 // </div>,
 //  document.getElementById('root'))
 
-import Saudacao from './componentes/Saudacao'
-ReadDOM.render(
-    <Saudacao tipo="Bom dia" nome="João"/>,
-     document.getElementById('root'))
+// import Saudacao from './componentes/Saudacao'
+// ReadDOM.render(
+//     <Saudacao tipo="Bom dia" nome="João"/>,
+//      document.getElementById('root'))
+
+import Pai from './componentes/Pai'
+import Filho from './componentes/Filho'
+
+ReactDOM.render(
+    <div>
+        <Pai nome="Paulo" sobrenome="Silva">
+            <Filho nome="Pedro" />
+            <Filho nome="Paulo" />
+            <Filho nome="Carla" />
+        </Pai>
+    </div>
+, document.getElementById('root'))
