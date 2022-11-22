@@ -67,6 +67,10 @@ export default class Calculator extends Component{
                 break
             case '*':
                 result = left * right
+                break
+            default:
+                return result
+                                
         }
         return result
     }
