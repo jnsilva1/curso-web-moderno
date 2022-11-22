@@ -28,6 +28,10 @@ export default class Calculator extends Component{
             
             const values = [...this.state.values]
             values[0] = this.operation(currentOperation, values)
+            if(isNaN(values[0]) || !isFinite(values[0])){
+                this.clearMemory()
+                return
+            }
             // try{
 
             //     // values[0] = eval(`${values[0]} ${currentOperation} ${values[1]}`)
