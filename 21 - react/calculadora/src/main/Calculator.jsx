@@ -27,12 +27,14 @@ export default class Calculator extends Component{
             const currentOperation = this.state.operation
             
             const values = [...this.state.values]
-            try{
+            values[0] = this.operation(currentOperation, values)
+            // try{
 
-                values[0] = eval(`${values[0]} ${currentOperation} ${values[1]}`)
-            }catch(e){
-                values[0] = this.state.values[0]
-            }
+            //     // values[0] = eval(`${values[0]} ${currentOperation} ${values[1]}`)
+            //     values[0] = this.operation(currentOperation, values)
+            // }catch(e){
+            //     values[0] = this.state.values[0]
+            // }
             values[1] = 0
             this.setState({
                 displayValue: values[0],
@@ -43,6 +45,30 @@ export default class Calculator extends Component{
             })
 
         }
+    }
+
+    /**
+     * Realiza a operação
+     * @param {char} operator 
+     * @param {number[]} values 
+     * @return {number}
+     */
+    operation(operator, values){
+        let [left, right] = values, result = right || left
+        switch(operator){
+            case '/':
+                result = left / right
+                break
+            case '+':
+                result = left + right
+                break
+            case '-':
+                result = left - right
+                break
+            case '*':
+                result = left * right
+        }
+        return result
     }
 
     addDigit(n){
