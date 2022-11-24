@@ -13,6 +13,8 @@
     --shadow-menu:
         2px 0 10px 0 rgba(0, 0, 0, 0.12),
         2px 0 15px 0 rgba(0, 0, 0, 0.09);
+
+    --shadow-main-content: 0px 0px 15px #0004;    
 }
 
 
