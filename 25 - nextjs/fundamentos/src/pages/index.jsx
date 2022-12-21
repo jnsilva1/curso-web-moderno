@@ -1,8 +1,18 @@
+import Link from 'next/link'
+import Navegador from '../components/Navegador'
 function Inicio(){
     return (
-        <div>
-            <h1>Fundamentos de Next.js & React</h1>
-            <h2>Vamos estudar esse framework</h2>
+        <div style={{
+            display:'flex',
+            justifyContent:'center',
+            alignItems:'center',
+            height:'100vh',
+            flexWrap:'wrap'
+        }}>
+            <Navegador texto="Estiloso" destino="/estiloso"/>
+            <Navegador texto="Exemplo" destino="/exemplo" cor="#9400d3"/>
+            <Navegador texto="JSX" destino="/jsx" cor="crimson"/>
+            <Navegador texto="Navegação #01" destino="/navegacao" cor="green"/>
         </div>
     )
 }
