@@ -14,7 +14,9 @@ function Inicio(){
             <Navegador texto="JSX" destino="/jsx" cor="crimson"/>
             <Navegador texto="Navegação #01" destino="/navegacao" cor="green"/>
             <Navegador texto="Navegação #02" destino="/cliente/sp-2/123" cor="blue"/>
-            <Navegador texto="Componente com Estado" destino="/estado" cor="pink"/>
+            <Navegador texto="Componente com Estado" destino="/estado" cor="#a45b71"/>
+            <Navegador texto="Integração com API #01" destino="/integracao_1" cor="#429a9"/>
+            <Navegador texto="Conteúdo Estático" destino="/estatico" cor="#fa054a"/>
         </div>
     )
 }
