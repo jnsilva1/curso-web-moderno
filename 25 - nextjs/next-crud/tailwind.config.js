@@ -10,9 +10,7 @@ module.exports = {
       "./src/components/**/*.{js,ts,jsx,tsx}",
     ],
     safelist: [
-      /^bg-/,
-      /^to-/,
-      /^from-/
+      ...['blue', 'green', 'gray'].flatMap(cor=> [`from-${cor}-400`, `to-${cor}-700`]),
     ]
   },
   theme: {
