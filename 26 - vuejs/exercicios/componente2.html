@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Componente</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+    <script src="/js/vue.min.js"></script>
+</head>
+<body class="exercicio">
+    <div id="app">
+        <contador nome="1"></contador>
+        <contador nome="2"></contador>
+    </div>
+    <script>
+        Vue.component('contador', {
+            props:['nome'],
+            data: function(){
+                return {
+                    n: 0
+                }
+            },
+            template: `
+                <div>
+                    <h3>Contador {{nome}}</h3>
+                    <h4>n: {{n}}</h4>
+                    <p>
+                        <button type="button" @click="n += 1">Incrementar</button>
+                        <button type="button" @click="n -= 1">Decrementar</button>
+                    </p>
+                </div>
+            `
+        })
+
+        new Vue({
+            el:'#app',
+        })
+    </script>
+</body>
+</html>
