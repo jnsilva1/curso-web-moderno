@@ -20,12 +20,17 @@ export default {
         groupedWords: [
             {name:'I', amount: 1234 },
             {name:'you', amount: 900 },
-            {name:'here', amount: 853 }
+            {name:'he', amount: 853 },
         ]
     })
 }
 </script>
 
 <style>
-
+.pills{
+    display: flex;
+    /* flex-direction: column; */
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
 </style>
