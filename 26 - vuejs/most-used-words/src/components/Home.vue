@@ -1,44 +1,43 @@
 <template>
-  <v-container fluid>
+  <v-container>
     <v-form>
-        <v-file-input 
-            label="Selecione as Legendas"
+        <v-file-input
+            label="Selecione as legendas"
             prepend-icon="mdi-message-text"
             append-outer-icon="mdi-send"
             outlined
             multiple
             chips
             v-model="files"
-            @click:append-outer="processSubtitle"
-            />
+            @click:append-outer="processSubtitles"
+        />
     </v-form>
     <div class="pills">
-        <Pill v-for="word in groupedWords" :key="word.name"
-           :name="word.name" :amount="word.amount"/>
+        <Pill
+            v-for="word in groupedWords" 
+            :key="word.name"
+            :name="word.name"
+            :amount="word.amount"
+        />
     </div>
   </v-container>
 </template>
 
 <script>
-import Pill from './Pill.vue'
+import Pill from './Pill'
 export default {
     name:'HomeDisplay',
-
-    components:{
-        Pill
-    },
-
-    data: ()=>({
+    components:{Pill},
+    data:()=>({
         files:[],
-        groupedWords: [
+        groupedWords:[
             {name:'I', amount: 1234 },
             {name:'you', amount: 900 },
             {name:'he', amount: 853 },
         ]
     }),
-
     methods:{
-        processSubtitle(){
+        processSubtitles(){
             console.log(this.files)
         }
     }
@@ -48,8 +47,8 @@ export default {
 <style>
 .pills{
     display: flex;
-    /* flex-direction: column; */
     flex-wrap: wrap;
-    justify-content: space-evenly;
+
+    justify-content: space-between;
 }
 </style>
