@@ -5,7 +5,7 @@ import {
   createProtocol,
   installVueDevtools
 } from 'vue-cli-plugin-electron-builder/lib'
-// import './backend'
+import './backend'
 
 
 const isDevelopment = process.env.NODE_ENV !== 'production'

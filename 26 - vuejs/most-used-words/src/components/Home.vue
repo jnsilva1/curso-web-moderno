@@ -24,21 +24,23 @@
 </template>
 
 <script>
+import {ipcRenderer} from 'electron'
 import Pill from './Pill'
+const PROCESS_CHANNEL = 'process-subtitles'
 export default {
     name:'HomeDisplay',
     components:{Pill},
     data:()=>({
         files:[],
-        groupedWords:[
-            {name:'I', amount: 1234 },
-            {name:'you', amount: 900 },
-            {name:'he', amount: 853 },
-        ]
+        groupedWords:[]
     }),
     methods:{
         processSubtitles(){
-            console.log(this.files)
+            const paths = this.files.map(f=> f.path)
+            ipcRenderer.on(PROCESS_CHANNEL, (event, resp)=>{
+                this.groupedWords = resp
+            })
+            ipcRenderer.send(PROCESS_CHANNEL, paths)
         }
     }
 }
