@@ -27,6 +27,7 @@ import { ProductCreateComponent } from './components/product/product-create/prod
 import { HeaderComponent } from './components/template/header/header.component';
 import { FooterComponent } from './components/template/footer/footer.component';
 import { NavComponent } from './components/template/nav/nav.component';
+import { ProductReadComponent } from './components/product/product-read/product-read.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { NavComponent } from './components/template/nav/nav.component';
     ProductCrudComponent,
     RedDirective,
     ForDirective,
-    ProductCreateComponent
+    ProductCreateComponent,
+    ProductReadComponent
   ],
   imports: [
     BrowserModule,
