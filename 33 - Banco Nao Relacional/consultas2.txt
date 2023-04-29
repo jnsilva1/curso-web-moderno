@@ -1,0 +1,9 @@
+db.estados.aggregate([
+    {$project: {nome: true, "cidades.nome": true, _id: false}}
+])
+
+db.estados.aggregate([
+    {$project: {populacao: {$sum: "$cidades.populacao"}, sigla: true, _id: false}},
+    {$group: {_id: null, populacaoTotal:{$sum:"$populacao"}}},
+    {$project: {populacaoTotal: true, _id: false}}
+])
