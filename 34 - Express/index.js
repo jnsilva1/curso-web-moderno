@@ -10,6 +10,22 @@ app.use((req, res, next) => {
   next(); // irá rodar neste método (e nada mais)
 });
 
+app.get("/cliente/relatorio", (req, res) => {
+  res.send(
+    `Cliente relatório: completo = ${req.query.completo} ano = ${req.query.ano}`
+  );
+});
+
+app.post("/corpo", (req, res) => {
+  let corpo = "";
+  req.on("data", (parte) => (corpo += parte)); //captura partes do corpo do cliente e guarda em uma variável (que vai ter vários chunks de cliente) e depois envio de cada parte.
+  req.on("end", () => res.send(corpo)); //faz o envio de cada parte do corpo, e “finaliza” a resposta. Nada mais a ser feito, pois estamos tratando todo o corpo do client
+});
+
+app.get("/cliente/:id", (req, res) => {
+  res.send(`Cliente ${req.params.id} selecionado!`);
+});
+
 app.get("/opa", (req, res, next) => {
   console.log("Durante...");
   res.json({
