@@ -1,7 +1,12 @@
 const express = require("express");
 const app = express();
+const bodyParser = require("body-parser");
 
 const saudacao = require("./saudacaoMid");
+
+app.use(bodyParser.text());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(saudacao("José Silva"));
 
@@ -19,7 +24,7 @@ app.get("/cliente/relatorio", (req, res) => {
 app.post("/corpo", (req, res) => {
   let corpo = "";
   req.on("data", (parte) => (corpo += parte)); //captura partes do corpo do cliente e guarda em uma variável (que vai ter vários chunks de cliente) e depois envio de cada parte.
-  req.on("end", () => res.send(corpo)); //faz o envio de cada parte do corpo, e “finaliza” a resposta. Nada mais a ser feito, pois estamos tratando todo o corpo do client
+  req.on("end", () => res.send(req.body)); //faz o envio de cada parte do corpo, e “finaliza” a resposta. Nada mais a ser feito, pois estamos tratando todo o corpo do client
 });
 
 app.get("/cliente/:id", (req, res) => {
