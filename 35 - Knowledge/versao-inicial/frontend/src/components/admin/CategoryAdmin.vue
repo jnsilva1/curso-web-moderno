@@ -4,18 +4,19 @@
       <input type="hidden" id="category-id" v-model="category.id">
       <b-row>
         <b-col>
-          <b-form-group label="Nome:" label-for="category-name">
+          <b-form-group label="Nome" label-for="category-name">
             <b-form-input
               id="category-name"
               v-model="category.name"
               type="text"
               placeholder="Informe o nome da categoria"
+              :readonly="mode === 'remove'"
               required
             ></b-form-input>
           </b-form-group>
         </b-col>
       </b-row>
-      <b-row>
+      <b-row v-if="mode === 'save'">
         <b-col>
           <b-form-group label="Categoria Pai" label-for="category-parent">
             <b-form-select

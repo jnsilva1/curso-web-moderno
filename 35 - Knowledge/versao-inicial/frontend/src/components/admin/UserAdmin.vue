@@ -4,27 +4,27 @@
         <input type="hidden" id="user-id" v-model="user.id">
         <b-row>
             <b-col md="6" sm="12">
-                <b-form-group label="Nome:" label-for="user-name">
+                <b-form-group label="Nome" label-for="user-name">
                     <b-form-input id="user-name" v-model="user.name" type="text" placeholder="Informe o nome do usuário" required :readonly="readonly"></b-form-input>
                 </b-form-group>
             </b-col>
             <b-col md="6" sm="12">
-                <b-form-group label="E-mail:" label-for="user-email">
+                <b-form-group label="E-mail" label-for="user-email">
                     <b-form-input id="user-email" v-model="user.email" type="email" placeholder="Informe o e-mail do usuário" required :readonly="readonly"></b-form-input>
                 </b-form-group>
             </b-col>
         </b-row>
         <b-form-checkbox id="user-admin" v-model="user.admin" class="mt-3 mb-3" v-show="!readonly">
-            Administrador?
+            Administrador
         </b-form-checkbox>
         <b-row v-show="!readonly">
             <b-col md="6" sm="12">
-                <b-form-group label="Senha:" label-for="user-password">
+                <b-form-group label="Senha" label-for="user-password">
                     <b-form-input id="user-password" v-model="user.password" type="password" placeholder="Informe a senha do usuário" required></b-form-input>
                 </b-form-group>
             </b-col>
             <b-col md="6" sm="12">
-                <b-form-group label="Confirmação de senha:" label-for="user-confirm-password">
+                <b-form-group label="Confirmação de Senha" label-for="user-confirm-password">
                     <b-form-input id="user-confirm-password" v-model="user.confirmPassword" type="password" placeholder="Confirme a senha do usuário" required></b-form-input>
                 </b-form-group>
             </b-col>
