@@ -14,45 +14,65 @@
                 </b-form-group>
             </b-col>
         </b-row>
-        <b-form-checkbox id="user-admin" v-model="user.admin" class="mt-3 mb-3" :disabled="readonly">
+        <b-form-checkbox id="user-admin" v-model="user.admin" class="mt-3 mb-3" v-show="!readonly">
             Administrador?
         </b-form-checkbox>
-        <b-row>
+        <b-row v-show="!readonly">
             <b-col md="6" sm="12">
                 <b-form-group label="Senha:" label-for="user-password">
-                    <b-form-input id="user-password" v-model="user.password" type="password" placeholder="Informe a senha do usuário" required :readonly="readonly"></b-form-input>
+                    <b-form-input id="user-password" v-model="user.password" type="password" placeholder="Informe a senha do usuário" required></b-form-input>
                 </b-form-group>
             </b-col>
             <b-col md="6" sm="12">
                 <b-form-group label="Confirmação de senha:" label-for="user-confirm-password">
-                    <b-form-input id="user-confirm-password" v-model="user.confirmPassword" type="password" placeholder="Confirme a senha do usuário" required :readonly="readonly"></b-form-input>
+                    <b-form-input id="user-confirm-password" v-model="user.confirmPassword" type="password" placeholder="Confirme a senha do usuário" required></b-form-input>
                 </b-form-group>
             </b-col>
         </b-row>
-        <b-button 
-            variant="primary" 
-            v-if="mode === 'save'"
-            @click="save"
-        >
-        Salvar
-        </b-button>
-        <b-button 
-            variant="danger" 
-            v-if="mode === 'remove'"
-            @click="remove"
-        >
-        Excluir
-        </b-button>
-        <b-button 
-            class="ml-2"
-            @click="reset"
-        >
-        Cancelar
-        </b-button>
+        <b-row>
+            <b-col>
+                <b-button 
+                    variant="primary" 
+                    v-if="mode === 'save'"
+                    @click="save"
+                    >
+                    Salvar
+                </b-button>
+                <b-button 
+                variant="danger" 
+                    v-if="mode === 'remove'"
+                    @click="remove"
+                >
+                Excluir
+                </b-button>
+                <b-button 
+                    class="ml-2"
+                    @click="reset"
+                    >
+                Cancelar
+                </b-button>
+        </b-col>
+    </b-row>
     </b-form>
     <hr/>
     <b-table hover stripped :items="users" :fields="fields">
-
+        <template slot="actions" slot-scope="data">
+            <b-button 
+                variant="warning" 
+                size="sm"
+                class="mr-2"
+                @click="loadUser(data.item, 'save')"
+            >
+            <i class="fa fa-pencil"></i>
+            </b-button>
+            <b-button 
+                variant="danger" 
+                size="sm"
+                @click="loadUser(data.item, 'remove')"
+            >
+            <i class="fa fa-trash"></i>
+            </b-button>
+        </template>
     </b-table>
   </div>
 </template>
@@ -124,6 +144,10 @@ export default {
           this.reset()
         })
         .catch(showError)
+    },
+    loadUser(user, mode = 'save') {
+      this.mode = mode
+      this.user = { ...user }
     },
   },
   mounted() {
