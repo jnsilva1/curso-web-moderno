@@ -1,7 +1,7 @@
 <template>
   <div class="page-title">
     <h1>
-        <i v-if="icon" :class="icon">{{ main }}</i>
+        <i v-if="icon" :class="icon"> {{ main }}</i>
     </h1>
     <h2>
         {{ sub }}
