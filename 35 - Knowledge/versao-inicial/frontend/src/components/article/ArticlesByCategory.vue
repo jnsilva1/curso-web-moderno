@@ -49,6 +49,17 @@ export default {
     PageTitle,
     ArticleItem,
   },
+  watch: {
+    $route(to) {
+      this.page = 1
+      this.loadMore = true
+      this.articles = []
+      this.category.id = to.params.id
+
+      this.getCategory()
+      this.getArticles()
+    },
+  },
   mounted() {
     this.category.id = this.$route.params.id
     this.getCategory()
