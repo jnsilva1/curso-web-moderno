@@ -3,7 +3,7 @@
     <PageTitle icon="fa fa-folder-o" :main="category.name" sub="Categoria"></PageTitle>
     <ul>
         <li v-for="article in articles" :key="article.id">
-            {{ article.name }}
+            <ArticleItem :article="article"/>
         </li>
     </ul>
     <div class="load-more">
@@ -18,6 +18,7 @@
 import axios from 'axios'
 import { baseApiUrl } from '@/global'
 import PageTitle from '@/components/template/PageTitle.vue'
+import ArticleItem from '@/components/article/ArticleItem.vue'
 export default {
   name: 'ArticlesByCategory',
   data() {
@@ -39,13 +40,14 @@ export default {
       const url = `${baseApiUrl}/categories/${this.category.id}/articles?page=${this.page}`
       axios.get(url).then((res) => {
         this.articles = this.articles.concat(res.data)
-        this.loadMore = res.data.length >= 0
+        this.loadMore = res.data.length > 0
         this.page++
       })
     },
   },
   components: {
     PageTitle,
+    ArticleItem,
   },
   mounted() {
     this.category.id = this.$route.params.id
